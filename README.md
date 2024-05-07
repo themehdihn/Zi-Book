@@ -11,11 +11,13 @@ Zi-Book is an EPUB e-book reader app developed using React Native.
 
 ## Screenshots
 
-![Screenshot 1](/screenshots/screenshot1.png)
-![Screenshot 2](/screenshots/screenshot2.png)
-![Screenshot 3](/screenshots/screenshot3.png)
-![Screenshot 4](/screenshots/screenshot4.png)
-![Screenshot 5](/screenshots/screenshot5.png)
+<div align="center">
+  <img src="/screenshots/screenshot1.png" width="540" height="960" alt="Screenshot 1">
+  <img src="/screenshots/screenshot2.png" width="540" height="960" alt="Screenshot 2">
+  <img src="/screenshots/screenshot3.png" width="540" height="960" alt="Screenshot 3">
+  <img src="/screenshots/screenshot4.png" width="540" height="960" alt="Screenshot 4">
+  <img src="/screenshots/screenshot5.png" width="540" height="960" alt="Screenshot 5">
+</div>
 
 ## Installation
 
