@@ -11,6 +11,7 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.flipper.ReactNativeFlipper
 import com.facebook.soloader.SoLoader
+import com.facebook.react.modules.i18nmanager.I18nUtil
 
 class MainApplication : Application(), ReactApplication {
 
@@ -40,6 +41,8 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
+    I18nUtil.getInstance().allowRTL(this, true);
+    I18nUtil.getInstance().forceRTL(this, true);
     ReactNativeFlipper.initializeFlipper(this, reactNativeHost.reactInstanceManager)
   }
 }
