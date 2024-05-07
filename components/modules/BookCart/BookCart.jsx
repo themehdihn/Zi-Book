@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRate } from '../../../redux/store/comments';
 
 export default function BookCart({ bookName, writer, coverUrl, translator, isSubscription,id }) {
+    
     const {
         dark, colors
     } = useTheme();
@@ -16,7 +17,7 @@ export default function BookCart({ bookName, writer, coverUrl, translator, isSub
 
     useEffect(()=>{
         dispatch(getRate(id))
-        // console.log("rate",rate)
+       
     },[])
 
     const comments = useSelector(state => state.comments);
@@ -57,9 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: ScaledSize(10),
         alignItems: "center",
         justifyContent: "space-evenly",
-        // marginRight: ScaledSize(15),
         marginBottom: ScaledSize(15),
-        // marginLeft: ScaledSize(6),
         marginHorizontal: 10,
     },
     book_img: {
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
         height: ScaledSize(135),
         top: ScaledSize(10),
         position: "relative",
-        // backgroundColor:"red"
     },
     book_info: {
         paddingHorizontal: ScaledSize(8),
