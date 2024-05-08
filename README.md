@@ -28,9 +28,11 @@ Zi-Book is an EPUB e-book reader app developed using React Native.
   ```
 
 3. Navigate to the project directory:
-cd Zi-Book
+  ```bash
+  cd Zi-Book
+  ```
 
-4. Install dependencies:
+5. Install dependencies:
 npm install
 
 ## Running the App
