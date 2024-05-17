@@ -15,20 +15,13 @@ import { getAllBooks } from "../redux/store/books";
 import { getAllCategories } from "../redux/store/categories";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { decodeToken } from "../utils/token";
-import { getProfile } from "../redux/store/profile";
 import { getCarousel } from "../redux/store/carousel";
 import LoadingIndex from "../components/templates/LoadingHome/LoadingIndex";
-import { Profile } from "../redux/store/users";
 
 
 export default function Home({ navigation }) {
-
     const dispath = useDispatch();
-    const {
-        dark, colors,
-    } = useTheme();
-    // const profile = useSelector((state) => state.profile);
-
+    const { colors } = useTheme();
 
     const books = useSelector((state) => state.books.allBooks);
     const homeBooks = books.slice(0, 5)
@@ -40,19 +33,7 @@ export default function Home({ navigation }) {
     const randomCategory = newCategories.sort(() => Math.random() - 0.5);
     const finalCategory = randomCategory.slice(0, 5);
 
-    const shouldRenderContent =
-        homeBooks !== null && finalCategory !== null && carousel !== null &&
-        (homeBooks.length !== 0 || finalCategory.length !== 0 || carousel.length !== 0);
-
     useEffect(() => {
-
-        const myFunc = async () => {
-            const token = await AsyncStorage.getItem("token");
-            const url = await AsyncStorage.getItem("url");
-            console.log(token,url);
-            dispath(Profile())
-        };
-        myFunc();
         dispath(getAllBooks());
         dispath(getAllCategories())
         dispath(getCarousel())
@@ -61,31 +42,14 @@ export default function Home({ navigation }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // بررسی آماده بودن موارد
         if (homeBooks.length !== 0 && finalCategory.length !== 0 && carousel.length !== 0) {
-            setLoading(false); // تغییر وضعیت لود به false
+            setLoading(false);
         }
     }, [books, categories, carousel]);
-
-
 
     const categorySubmissions = (catId, catName) => {
         navigation.navigate('catbook', { catId, catName })
     }
-
-    // const handelProfile = async () => {
-    //     try {
-    //         const res = dispath(getProfile())
-    //         console.log("proffffffff", res.data)
-    //         if (res.error) {
-    //             console.log("new", res.error)
-    //         } else {
-    //             console.log("sucess meti")
-    //         }
-    //     } catch (error) {
-
-    //     }
-    // }
 
     return (
         <SafeAreaView style={styles.container} >

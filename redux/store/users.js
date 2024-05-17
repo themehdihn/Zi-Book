@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import http, {getToken} from '../../api/';
+import http from '../../api/';
 
 export const loginUser = createAsyncThunk('users/loginUser', async user => {
   try {
@@ -9,16 +9,9 @@ export const loginUser = createAsyncThunk('users/loginUser', async user => {
       JSON.stringify(user),
     );
     console.log('asdadsadad', data);
-    if (data.error) {
-      console.log(data.error);
-    } else {
-      await AsyncStorage.setItem('token', JSON.stringify(data.accessToken));
-      await AsyncStorage.setItem('userId', JSON.stringify(data.userId));
-      await AsyncStorage.setItem('name', JSON.stringify(data.name));
-      await AsyncStorage.setItem('phone', JSON.stringify(data.phone));
-      await AsyncStorage.setItem('url', JSON.stringify(data.url));
-    }
-    return data;
+    await AsyncStorage.setItem('token', JSON.stringify(data.accessToken));
+    await AsyncStorage.setItem('userId', JSON.stringify(data.userId));
+    return status;
   } catch (err) {
     console.log(err);
   }

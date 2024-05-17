@@ -96,13 +96,11 @@ export default function LoginScreen({ navigation }) {
 
     }, [])
 
-
     const handelLogin = async (user) => {
         try {
-           
             const status = await dispath(loginUser(user))
             console.log("first", status)
-            if (!status.payload) {
+            if (status === 200) {
                 Toast.success('با موفقیت وارد شدید!', 'top')
                setTimeout(() => {
                 navigation.reset({
@@ -111,18 +109,12 @@ export default function LoginScreen({ navigation }) {
                 });
                }, 1000);
             } else {
-                
                 Toast.error('ایمیل یا رمز عبور اشتباه است!', 'top')
-               
             }
-
         } catch (error) {
             console.log(error)
         }
-
     }
-
-
 
     return (
         <View style={[styles.container, { backgroundColor: colors.primary }]}>
