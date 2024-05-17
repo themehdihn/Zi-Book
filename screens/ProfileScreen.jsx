@@ -37,7 +37,7 @@ export default function ProfileScreen({ navigation }) {
           marginTop: ScaledSize(25),
           marginHorizontal: ScaledSize(20)
         }}>
-        <ProfileBox name={name} phone={phone} url={url} />
+        <ProfileBox {...{ name, phone, url }} />
         <Theme />
         <Setting />
         <MoreItems />

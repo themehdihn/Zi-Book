@@ -20,8 +20,8 @@ export default function ProfileBox(props) {
                         </View>
                         {/* Img */}
                         <View style={styles.user_info}>
-                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="12" styles={{ color: colors.text, }}>{name}</ZiText>
-                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="11" styles={{ color: "#848484" }}>{phone}</ZiText>
+                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="12" styles={{ color: colors.text, }}>{name.replace(/"/g, "")}</ZiText>
+                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="11" styles={{ color: "#848484" }}>{phone.replace(/"/g, "")}</ZiText>
                         </View>
                         {/* User Info */}
                     </View>
