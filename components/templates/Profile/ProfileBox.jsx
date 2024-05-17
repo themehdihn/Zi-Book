@@ -5,22 +5,23 @@ import { ScaledSize, ScaledWidth, ScaledHeight } from "../../../utils/responsive
 import ZiText from '../../modules/ZiBookText'
 import { Icon } from '../../modules/AppIcon';
 
-export default function ProfileBox() {
-    const {
-        dark, colors
-    } = useTheme();
+export default function ProfileBox(props) {
+    const { colors } = useTheme();
+
+    const { name, phone, url } = props;
+
     return (
         <View style={[styles.profile_box, { backgroundColor: colors.card }]}>
             <View style={styles.row_box}>
                 <View>
                     <View style={styles.profile_container}>
                         <View style={styles.profile_img__container}>
-                            <Image style={styles.img} source={{ uri: "https://rozup.ir/view/3819058/photo_2023-08-07_02-17-23.jpg" }} />
+                            <Image style={styles.img} source={{ uri: 'https://zibook.storage.iran.liara.space/download.png' }} />
                         </View>
                         {/* Img */}
                         <View style={styles.user_info}>
-                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="12" styles={{ color: colors.text, }}>زیبا ترابی</ZiText>
-                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="11" styles={{ color: "#848484" }}>9189132311</ZiText>
+                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="12" styles={{ color: colors.text, }}>{name}</ZiText>
+                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="11" styles={{ color: "#848484" }}>{phone}</ZiText>
                         </View>
                         {/* User Info */}
                     </View>

@@ -13,15 +13,25 @@ import MoreItems from '../components/templates/Profile/MoreItems';
 import Header from '../components/modules/Header';
 import CopyRight from '../components/templates/Profile/CopyRight';
 import { Profile } from '../redux/store/users';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ProfileScreen({ navigation }) {
-  const dispath = useDispatch();
-  //  const profile = useSelector((state) => state.Profile);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [url, setUrl] = useState('');
 
   useEffect(() => {
-    dispath(Profile())
-    // console.log("prooo",profile)
-  }, [])
+    const profileInfo = async () => {
+      const storedName = await AsyncStorage.getItem('name');
+      const storedPhone = await AsyncStorage.getItem('phone');
+      const storedUrl = await AsyncStorage.getItem('url');
+
+      if (storedName) setName(storedName);
+      if (storedPhone) setPhone(storedPhone);
+      if (storedUrl) setUrl(storedUrl);
+    };
+    profileInfo();
+  }, []);
 
 
   return (
@@ -32,24 +42,14 @@ export default function ProfileScreen({ navigation }) {
           marginTop: ScaledSize(25),
           marginHorizontal: ScaledSize(20)
         }}>
-
-        <ProfileBox />
-        {/* User Info Section */}
-
+        <ProfileBox name={name} phone={phone} url={url} />
         <Theme />
-        {/* Change Theme Section */}
-
         <Setting />
-        {/* Change Setting */}
-
         <MoreItems />
-        {/* More Items */}
 
         <TouchableOpacity onPress={() => navigation.navigate('profilestack')}>
           <CopyRight />
         </TouchableOpacity>
-        {/* Copy Right */}
-
       </ScrollView>
       {/* User Info */}
     </SafeAreaView>

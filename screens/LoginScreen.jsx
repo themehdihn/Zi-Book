@@ -10,7 +10,7 @@ import TransferText from '../components/modules/TransferText';
 import { ErrorMessage, Formik } from "formik";
 import SubmitLoading from '../components/modules/SubmitLoading';
 import SubmitError from '../components/modules/SubmitError';
-import { loginUser } from "../redux/store/users";
+import { Profile, loginUser } from "../redux/store/users";
 import { StackActions, useNavigationState } from '@react-navigation/native'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getProfile } from "../redux/store/profile";
@@ -74,9 +74,7 @@ export default function LoginScreen({ navigation }) {
     }, []);
 
     useEffect(() => {
-
         const myFunc = async () => {
-
             const token = await AsyncStorage.getItem("token");
             const userId = JSON.parse(await AsyncStorage.getItem("userId"));
             if (token !== null && userId !== null) {
@@ -90,7 +88,6 @@ export default function LoginScreen({ navigation }) {
                     navigation.navigate("login");
                 }
             }
-
         };
         myFunc();
 
@@ -99,15 +96,16 @@ export default function LoginScreen({ navigation }) {
     const handelLogin = async (user) => {
         try {
             const status = await dispath(loginUser(user))
-            console.log("first", status)
-            if (status === 200) {
+            console.log("first", status.payload)
+            if (status.payload === 200) {
                 Toast.success('با موفقیت وارد شدید!', 'top')
-               setTimeout(() => {
-                navigation.reset({
-                    index: 0,
-                    routes: [{ name: "home" }],
-                });
-               }, 1000);
+                setTimeout(() => {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: "home" }],
+                    });
+                }, 1000);
+                dispath(Profile())
             } else {
                 Toast.error('ایمیل یا رمز عبور اشتباه است!', 'top')
             }
@@ -118,7 +116,7 @@ export default function LoginScreen({ navigation }) {
 
     return (
         <View style={[styles.container, { backgroundColor: colors.primary }]}>
-           <ZiToast/>
+            <ZiToast />
             <View style={{ marginHorizontal: ScaledSize(20) }}>
                 <FormHeader />
                 {/* End FormHeader */}

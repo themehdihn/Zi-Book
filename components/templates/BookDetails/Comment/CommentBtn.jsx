@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import { useTheme } from '@react-navigation/native';
 import { ScaledSize } from "../../../../utils/responsive"
 
-export default function CommentBtn({children}) {
+export default function CommentBtn({ children }) {
     return (
         <View style={styles.btn_container}>
             {children}

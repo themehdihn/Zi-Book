@@ -12,7 +12,7 @@ export default function CommentBody({ name, rate, description }) {
             <View style={styles.header}>
                 <View style={styles.profile}>
                     <View style={styles.img_container}>
-                        <Image style={styles.img} source={{ uri: "https://rozup.ir/view/3819058/photo_2023-08-07_02-17-23.jpg" }} />
+                        <Image style={styles.img} source={{ uri: "https://zibook.storage.iran.liara.space/download.png" }} />
                     </View>
                     {/* Img */}
                     <ZiText fontFamily="IRANYekanXFaNum-Medium" size="13" styles={{ color: colors.text, marginLeft: ScaledSize(10) }}>{name}</ZiText>

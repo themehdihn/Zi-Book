@@ -18,7 +18,11 @@ export default function AddComment({ id }) {
   return (
     <TouchableOpacity
       onPress={goToCommentPage}
-      style={[styles.addcomment, { backgroundColor: colors.add_comment_bg, borderColor: colors.border }]}>
+      style={[
+        styles.addcomment, {
+          backgroundColor: colors.add_comment_bg,
+          borderColor: colors.border
+        }]}>
       <ZiText fontFamily="IRANYekanXFaNum-Regular" size="13" styles={{ color: colors.add_comment_txt }}>
         ثبت نظر
       </ZiText>

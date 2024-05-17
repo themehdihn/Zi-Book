@@ -7,32 +7,36 @@ import { Icon } from '../../modules/AppIcon';
 import SettingItem from './SettingItem/SettingItem';
 import FontSizeChanger from './SettingItem/FontSizeChanger';
 import { lighttheme, darktheme, sepia } from '../../templates/BookView/CustomThemes';
-import { Reader, ReaderProvider, useReader, } from '@epubjs-react-native/core';
+import { useReader } from '@epubjs-react-native/core';
 
 export default function SettingMenu({ onClose }) {
+  const { changeTheme, progress } = useReader();
   const {
     dark, colors
   } = useTheme();
-  const { changeTheme, progress } = useReader();
+
   return (
     <View>
       <View style={styles.palette_theme}>
         <ZiText fontFamily="IRANYekanXFaNum-DemiBold" size="15" styles={{ color: colors.text }}>رنگ پس زمینه</ZiText>
         {/* Title */}
-        <View style={styles.palette_theme_contianer}>
 
+        <View style={styles.palette_theme_contianer}>
           <TouchableOpacity onPress={() => changeTheme(darktheme)}>
             <SettingItem color={'#fff'} bgcolor={'#1c1e2b'} title="الف" />
           </TouchableOpacity>
           {/* Dark Theme */}
+
           <TouchableOpacity onPress={() => changeTheme(lighttheme)}>
-          <SettingItem color={'#000'} bgcolor={'#fff'} title="الف" />
+            <SettingItem color={'#000'} bgcolor={'#fff'} title="الف" />
           </TouchableOpacity>
           {/* light Theme */}
+
         </View>
         {/* Cart container */}
       </View>
       {/* Palette Section */}
+
       <View style={styles.fontsize}>
         <ZiText fontFamily="IRANYekanXFaNum-DemiBold" size="15" styles={{ color: colors.text }}>اندازه متن</ZiText>
         {/* Title */}

@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from '@react-navigation/native';
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../../../../utils/responsive"
 import ZiText from '../../../modules/ZiBookText'
@@ -28,6 +27,5 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderTopRightRadius: ScaledSize(10),
         borderBottomRightRadius: ScaledSize(10),
-        
     }
 });

@@ -9,7 +9,10 @@ export default function PageCounter({ currentPageNum, totalPageNum }) {
 
     return (
         <View style={styles.page_container}>
-            <View style={[styles.page_counter,{backgroundColor:colors.page_counter}]}>
+            <View style={[
+                styles.page_counter,
+                { backgroundColor: colors.page_counter }
+            ]}>
                 <ZiText fontFamily="IRANYekanXFaNum-Regular" size="12" styles={{ color: colors.page_counter_txt }}>صفحه {currentPageNum} از {totalPageNum === '0' ? 'wait' : totalPageNum}</ZiText>
             </View>
         </View>
@@ -23,9 +26,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         position: "absolute",
         top: ScaledSize(20),
-        pointerEvents:"none",
+        pointerEvents: "none",
         left: 0,
-        right:0,
+        right: 0,
         zIndex: 999
     },
     page_counter: {

@@ -44,10 +44,17 @@ export const Logout = createAsyncThunk('users/Logout', async () => {
 
 export const Profile = createAsyncThunk('users/Profile', async () => {
   try {
-    const userId = await AsyncStorage.getItem('userId');
     const token = await AsyncStorage.getItem('token');
-    const res = await http.get(`${http.url}/users/profile`, {});
-    console.log('profile', res.data);
+    const res = await http.get(`${http.url}/users/profile`, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(token)}`,
+      },
+    });
+    await AsyncStorage.setItem('url', JSON.stringify(res.data.url));
+    await AsyncStorage.setItem('name', JSON.stringify(res.data.name));
+    await AsyncStorage.setItem('phone', JSON.stringify(res.data.phone));
+
+    return res.data;
   } catch (error) {
     console.log(error);
   }
