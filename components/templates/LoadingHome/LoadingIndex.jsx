@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import { View, StyleSheet, StatusBar, TouchableOpacity, ScrollView, FlatList, SafeAreaView } from 'react-native'
+import React from "react"
+import { View, StyleSheet, StatusBar} from 'react-native'
 import { useTheme } from '@react-navigation/native';
 import { ScaledSize } from "../../../utils/responsive"
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
@@ -13,18 +13,17 @@ export default function LoadingIndex() {
     const {
         dark, colors,
     } = useTheme();
+
     return (
         <View>
             <View style={[styles.headerbox, { backgroundColor: colors.primary, shadowColor: colors.shadow }]}>
                 <Header />
             </View>
             {/* End Header */}
-
             <View style={{ paddingTop: ScaledSize(25) }}>
                 <Carousel />
             </View>
             {/* End Carousel */}
-
             <View style={{ paddingTop: ScaledSize(25), }}>
                 <Category />
             </View>
@@ -42,9 +41,8 @@ export default function LoadingIndex() {
             {/* Lastest Book */}
 
             <View style={{ paddingTop: ScaledSize(40), }}>
-                {/* <HeadSection title="کتاب های رایگان" /> */}
                 <HeadTitle />
-                {/* head title */}
+                {/* Head Title */}
                 <View style={{ paddingTop: ScaledSize(25) }}>
                     <BookCarts />
                     {/* Book Cart */}

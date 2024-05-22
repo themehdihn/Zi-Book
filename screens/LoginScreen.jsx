@@ -62,7 +62,7 @@ export default function LoginScreen({ navigation }) {
                     return true;
                 }
                 currentCount += 1;
-                console.log("braye exit kos nago")
+                console.log("braye exit ")
 
                 setTimeout(() => {
                     currentCount = 0;
@@ -197,7 +197,6 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
         justifyContent: "center",
     }
 });

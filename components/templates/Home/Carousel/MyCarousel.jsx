@@ -7,9 +7,6 @@ import { ScaledSize, ScaledWidth, ScaledHeight } from "../../../../utils/respons
 
 export default function MyCarousel({ data, autoPlay, pagination }) {
 
-
-
-
   const scrollViewRef = useAnimatedRef(null);
   const interval = useRef();
   const [isAutoPlay, setIsAutoPlay] = useState(autoPlay);

@@ -76,7 +76,7 @@ export default function Home({ navigation }) {
                             <TouchableOpacity onPress={() => navigation.navigate('search', { books: books })}>
                                 <SearchBox />
                             </TouchableOpacity>
-
+                            {/* SearchBox */}
                         </View>
                         {/* End Header */}
 

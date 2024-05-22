@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         borderRadius: ScaledSize(8),
         backgroundColor: "#00cc66",
         flexDirection: "row",
-        fontSize: 12,
         marginTop: ScaledSize(20),
         overflow:"hidden"
     },
