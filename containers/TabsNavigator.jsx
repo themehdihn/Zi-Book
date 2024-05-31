@@ -8,13 +8,10 @@ import Main from '../screens/HomeScreen';
 import library from '../screens/LibraryScreen'
 import Category from '../screens/CategoryScreen'
 import Profile from '../screens/ProfileScreen'
-import ProfileStackNavigator from './ProfileStackNavigator';
 
 export default function TabsNavigator() {
-
     const Tab = createBottomTabNavigator();
-    // const contextData = useContext(AppleShopContextApp);
-    //* Use Context
+    
     const {
         dark, colors
     } = useTheme();
@@ -82,7 +79,6 @@ export default function TabsNavigator() {
                         fontFamily: "IRANYekanXFaNum-DemiBold",
                         fontSize: ScaledSize(23)
                     }
-
                 })}>
                 <Tab.Screen
                     name="main"
@@ -113,13 +109,6 @@ export default function TabsNavigator() {
                     options={{
                         title: "پروفایل",
                         headerShown: true,
-                    }}
-                />
-                <Tab.Screen
-                    name="profilestack"
-                    component={ProfileStackNavigator}
-                    options={{
-                        tabBarItemStyle: { display: "none" }
                     }}
                 />
             </Tab.Navigator>

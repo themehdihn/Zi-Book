@@ -7,10 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/modules/Header';
 import LibraryCart from '../components/templates/Library/LibraryCart/LibraryCart';
 import ZiText from '../components/modules/ZiBookText'
-import EmptyView from '../components/modules/EmptyView';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserLibrary, removeFromLibrary, unrefetch } from '../redux/store/library';
-import { useZibook } from '../context/ZibookContext';
 import EmptyLibrary from '../components/templates/Library/EmptyLibrary';
 
 export default function LibraryScreen({ navigation }) {

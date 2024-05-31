@@ -30,10 +30,11 @@ const BookView = ({ bookInfo }) => {
     const dispatch = useDispatch();
     const navigation = useNavigation()
     const { colors, dark } = useTheme();
-    const { changeFontFamily, goNext, goPrevious, changeTheme, getLocations, goToLocation, theme } = useReader();
+
+    const { goNext, goPrevious, goToLocation } = useReader();
 
     // receive book info from params
-    const date = bookInfo.bookUrl
+    const data = bookInfo.bookUrl
     const bookId = bookInfo.id
     const progresss = bookInfo.progress
     const read = bookInfo.lastReadLocation
@@ -84,6 +85,7 @@ const BookView = ({ bookInfo }) => {
     const toggleVisibilitySetting = () => {
         isVisibleSetting.value = !isVisibleSetting.value;
     };
+
     const toggleVisibilityIndex = () => {
         isVisibleIndex.value = !isVisibleIndex.value;
     };
@@ -121,19 +123,11 @@ const BookView = ({ bookInfo }) => {
     const goNextPage = () => {
         goNext()
         updataBookInfo()
-        // switchTheme()
-        // const nextLoc = getCurrentLocation();
-        // const getLoc = getLocations();
-        // console.log("sdasdsa", s)
-
-        // console.log("loc", getLoc)
     }
+
     const goPrevPage = () => {
         goPrevious()
     }
-
-
-
 
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: colors.primary }]} >
@@ -165,9 +159,7 @@ const BookView = ({ bookInfo }) => {
             <PageCounter currentPageNum={currentPageNum} totalPageNum={totalPageNum} />
             {/* Page Counter */}
             <Reader
-                // initialLocation={!read && null}
                 enableSelection={false}
-
                 onNavigationLoaded={cfi => {
                     setCfi(cfi)
 
@@ -178,10 +170,6 @@ const BookView = ({ bookInfo }) => {
                         }
                     }
                 }}
-                onReady={(page, numberOfPages, progress) => {
-                    console.log("asdasdsadasdasdsda", page)
-                }}
-              
                 onLocationChange={(page, numberOfPages, progress) => {
                     setProgress(progress.toPrecision())
                     setCurrentPageNum(numberOfPages.start.location)
@@ -190,7 +178,7 @@ const BookView = ({ bookInfo }) => {
                     console.log(`Current page: ${page} ${numberOfPages.start.location} ${numberOfPages.start.cfi
                         } ${progress.toPrecision()}`);
                 }}
-                src={date}
+                src={data}
                 width={Dimensions.get('window').width}
                 height={Dimensions.get('window').height - ScaledHeight(140)}
                 enableSwipe={false}
@@ -208,10 +196,8 @@ const BookView = ({ bookInfo }) => {
             <View style={styles.controller_reader}>
                 <PageControllers goNext={goNextPage} goPrev={goPrevPage} />
                 {/* Controll Buttons */}
-
                 <ProgressBar progress={progress} />
                 {/* Progress Bar */}
-
             </View>
             {/* Section Controller */}
 

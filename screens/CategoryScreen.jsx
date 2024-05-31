@@ -6,7 +6,7 @@ import ZiText from '../components/modules/ZiBookText'
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../utils/responsive"
 import { Icon } from '../components/modules/AppIcon';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../components/modules/Header';
+
 import CategoryCart from '../components/templates/Category/CategoryCart/CategoryCart';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../redux/store/categories";
@@ -14,17 +14,8 @@ import { getCatBook } from '../redux/store/books';
 
 
 export default function CategoryScreen({ navigation }) {
-
   const { colors } = useTheme();
-  const dispath = useDispatch();
-  
   const categories = useSelector(state => state.categories)
-
-
-  useEffect(() => {
-
-   
-  }, [])
 
   const categorySubmissions =  (catId,catName) => {
     navigation.navigate('catbook', { catId, catName })

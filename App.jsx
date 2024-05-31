@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar } from 'react-native'
 import 'react-native-gesture-handler';
 import { ColorModeProvider, useThemeContext } from './context/ColorModeContext';
 import AnimatedSplash from "react-native-animated-splash-screen";
 import { NavigationContainer } from '@react-navigation/native';
-import { ZibookContextProvider } from './context/ZibookContext'
 import StackNavigator from './containers/StackNavigator'
 import getTheme from './utils/theme';
 import { Provider } from "react-redux"
@@ -15,7 +14,6 @@ export default function App() {
 
   useEffect(() => {
     setIsLoaded(true)
-    
   }, [])
 
   return (
@@ -29,9 +27,7 @@ export default function App() {
     >
       <ColorModeProvider>
         <Provider store={store}>
-          <ZibookContextProvider>
-            <AppContent />
-          </ZibookContextProvider>
+          <AppContent />
         </Provider>
       </ColorModeProvider>
     </AnimatedSplash>
@@ -39,7 +35,6 @@ export default function App() {
 }
 
 function AppContent() {
-
   const { theme } = useThemeContext();
 
   return (
