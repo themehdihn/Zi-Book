@@ -17,6 +17,7 @@ import NewBooksScreen from '../screens/NewBooksScreen';
 import CategoryBookScreen from '../screens/CategoryBookScreen';
 import ChangePassScreen from '../screens/ChangePassScreen';
 import AboutScreen from '../screens/AboutScreen';
+import { ScaledSize } from '../utils/responsive';
 // import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
 I18nManager.allowRTL(true)
@@ -86,7 +87,12 @@ export default function StackNavigator() {
                 name="about"
                 component={AboutScreen}
                 options={{
-                    headerShown: true
+                    headerShown: true,
+                    headerTitle:"درباره ما",
+                    headerTitleStyle:{
+                        fontFamily: 'IRANYekanXFaNum-DemiBold',
+                        fontSize: ScaledSize(20),
+                    }
                 }} />
             <Stack.Screen
                 name="changepass"
