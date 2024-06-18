@@ -19,14 +19,14 @@ export const loginUser = createAsyncThunk('users/loginUser', async user => {
 
 export const registerUser = createAsyncThunk(
   'users/registerUser',
-  async inputs => {
+  async user => {
     try {
-      const res = await http.post(`${http.url}/users/register`, inputs, {});
-      if (res.data.error) {
-        console.log(res.data.error);
-      } else {
-        console.log('success register');
-      }
+      const {status} = await http.post(
+        `${http.url}/users/appregister`,
+        JSON.stringify(user),
+      );
+      console.log(status);
+      return status;
     } catch (error) {
       console.log(error.message);
     }

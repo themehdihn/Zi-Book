@@ -8,19 +8,40 @@ import InputField from '../components/modules/InputField';
 import FormHeader from '../components/modules/FormHeader';
 import TransferText from '../components/modules/TransferText';
 import { ErrorMessage, Formik } from "formik";
-import { ZibookContext } from "../context/ZibookContext";
+import { useDispatch, useSelector } from "react-redux";
 import SubmitLoading from '../components/modules/SubmitLoading';
 import SubmitError from '../components/modules/SubmitError';
+import { registerUser } from '../redux/store/users';
+import ZiToast from '../components/modules/ZiToast';
+import { Toast } from 'toastify-react-native'
 
 export default function RegisterScreen({ navigation }) {
+    const dispath = useDispatch();
     const { colors, dark } = useTheme();
-    // const { register, resgisterError } = useContext(ZibookContext);
+
+    const handleUserRegistration = async (user) => {
+        try {
+            const status = await dispath(registerUser(user));
+                console.log("register=>>>", status.payload)
+            if (status.payload === 200) {
+                //navigation
+                Toast.success('حساب کاربری با موفقیت ساخته شد!', 'top')
+                navigation.navigate("login", { successRegister: true });
+            } else {
+                //show error
+                Toast.error('خطایی رخ داده است!', 'top')
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
 
     return (
         <View style={[styles.container, { backgroundColor: colors.primary }]}>
-            <View style={{
-                marginHorizontal: ScaledSize(20),
-            }}>
+            <ZiToast />
+            <View style={{ marginHorizontal: ScaledSize(20) }}>
+                {/* Start Header */}
                 <FormHeader />
                 {/* End Header */}
                 <Formik
@@ -56,10 +77,10 @@ export default function RegisterScreen({ navigation }) {
                         password: "",
                         confPassword: "",
                     }}
-                    onSubmit={(values, { setSubmitting }) => {
-                        console.log(values)
-                        // register(values);
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                        handleUserRegistration(values)
                         Keyboard.dismiss()
+                        resetForm()
                         setTimeout(() => {
                             setSubmitting(false)
                         }, 3000);

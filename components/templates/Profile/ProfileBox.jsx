@@ -1,13 +1,13 @@
 import React from 'react'
-import { Text, View, StyleSheet, StatusBar, TouchableOpacity, ScrollView, Image, FlatList, SafeAreaView, TouchableWithoutFeedback, } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
 import { useTheme } from '@react-navigation/native';
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../../../utils/responsive"
 import ZiText from '../../modules/ZiBookText'
 import { Icon } from '../../modules/AppIcon';
 
 export default function ProfileBox(props) {
-    const { colors } = useTheme();
 
+    const { colors } = useTheme();
     const { name, phone, url } = props;
 
     return (
@@ -16,12 +16,23 @@ export default function ProfileBox(props) {
                 <View>
                     <View style={styles.profile_container}>
                         <View style={styles.profile_img__container}>
-                            <Image style={styles.img} source={{ uri: 'https://zibook.storage.iran.liara.space/download.png' }} />
+                            <Image
+                                style={styles.img}
+                                source={{
+                                    uri: 'https://zibook.storage.iran.liara.space/download.png'
+                                }}
+                            />
                         </View>
                         {/* Img */}
                         <View style={styles.user_info}>
-                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="12" styles={{ color: colors.text, }}>{name.replace(/"/g, "")}</ZiText>
-                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="11" styles={{ color: "#848484" }}>{phone.replace(/"/g, "")}</ZiText>
+                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="12" styles={{ color: colors.text, }}>
+                                {name.replace(/"/g, "")}
+                            </ZiText>
+                            <ZiText fontFamily="IRANYekanXFaNum-Medium" size="11" styles={{ color: "#848484" }}>
+                                {
+                                    phone.replace(/"/g, "") === "0" ? "شماره موبایل ثبت نشده!" : phone.replace(/"/g, "")
+                                }
+                            </ZiText>
                         </View>
                         {/* User Info */}
                     </View>

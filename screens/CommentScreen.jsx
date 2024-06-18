@@ -15,22 +15,22 @@ import { createComment, getComment, unrefetch } from '../redux/store/comments';
 
 
 export default function CommentScreen({ route, navigation }) {
+
     if (!route.params.bookId) return null
+    const { bookId } = route.params;
+    
     const { colors } = useTheme();
     const dispath = useDispatch();
 
-    const { bookId } = route.params;
     useEffect(() => {
-        myFn()
+        getCommenterName()
 
-        console.log("bookId", bookId)
-        // dispath(getComment(bookId))
     }, [])
-    const myFn = async () => {
+
+    const getCommenterName = async () => {
         const name = await AsyncStorage.getItem('name');
         const newName = name.replace(/"/g, "")
         setName(newName)
-        console.log("name", name)
     }
 
     const [name, setName] = useState("")
@@ -49,7 +49,6 @@ export default function CommentScreen({ route, navigation }) {
         setCommentRate("")
     }
 
-
     const addCommentHandler = async () => {
         const data = {
             bookId,
@@ -57,10 +56,12 @@ export default function CommentScreen({ route, navigation }) {
             description,
             rate: commentRate
         }
-        await dispath(createComment(data))
-        dispath(unrefetch());
-        reset()
-        navigation.goBack()
+        if (description.length > 0 && commentRate !== 0) {
+            await dispath(createComment(data))
+            dispath(unrefetch());
+            reset()
+            navigation.goBack()
+        }
     }
 
     return (

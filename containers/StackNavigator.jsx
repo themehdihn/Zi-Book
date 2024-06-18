@@ -30,20 +30,13 @@ export default function StackNavigator() {
 
 
     return (
-        <Stack.Navigator
-            // initialRouteName="changepass"
-            screenOptions={{
-                headerShown: false,
-            }}
-        >
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name="login"
                 component={LoginScreen}
+                initialParams={{ successRegister: false }}
             />
-            <Stack.Screen
-                name="register"
-                component={RegisterScreen}
-            />
+            <Stack.Screen name="register" component={RegisterScreen} />
             <Stack.Screen
                 name="bookdetails"
                 component={BookDetailsScreen}
@@ -52,10 +45,7 @@ export default function StackNavigator() {
                     gestureEnabled: true,
                 }}
             />
-            <Stack.Screen
-                name="bookview"
-                component={BookViewScreen}
-            />
+            <Stack.Screen name="bookview" component={BookViewScreen} />
             <Stack.Screen
                 name="search"
                 component={SearchScreen}
@@ -64,18 +54,9 @@ export default function StackNavigator() {
                     animation: "fade_from_bottom",
                 }}
             />
-            <Stack.Screen
-                name="catbook"
-                component={CategoryBookScreen}
-            />
-            <Stack.Screen
-                name="freebook"
-                component={FreeBooksScreen}
-            />
-            <Stack.Screen
-                name="newbooks"
-                component={NewBooksScreen}
-            />
+            <Stack.Screen name="catbook" component={CategoryBookScreen} />
+            <Stack.Screen name="freebook" component={FreeBooksScreen} />
+            <Stack.Screen name="newbooks" component={NewBooksScreen} />
             <Stack.Screen
                 name="comment"
                 component={CommentScreen}
@@ -88,24 +69,14 @@ export default function StackNavigator() {
                 component={AboutScreen}
                 options={{
                     headerShown: true,
-                    headerTitle:"درباره ما",
-                    headerTitleStyle:{
+                    headerTitle: "درباره ما",
+                    headerTitleStyle: {
                         fontFamily: 'IRANYekanXFaNum-DemiBold',
                         fontSize: ScaledSize(20),
                     }
                 }} />
-            <Stack.Screen
-                name="changepass"
-                component={ChangePassScreen}
-                options={{
-
-                }} />
-            <Stack.Screen
-                name="home"
-                component={TabsNavigator}
-                options={{
-                }}
-            />
+            <Stack.Screen name="changepass" component={ChangePassScreen} />
+            <Stack.Screen name="home" component={TabsNavigator} />
         </Stack.Navigator>
     );
 };

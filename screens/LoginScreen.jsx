@@ -22,7 +22,6 @@ import { Toast } from 'toastify-react-native'
 
 export default function LoginScreen({ navigation }) {
     const dispath = useDispatch();
-
     const { colors, dark } = useTheme();
 
     const screenIndex = useNavigationState((state) => state.index);
