@@ -78,6 +78,7 @@ export default function LibraryScreen({ navigation }) {
           contentContainerStyle={{
             columnGap: ScaledSize(10),
             marginHorizontal: ScaledSize(20),
+            marginVertical:ScaledSize(20)
           }}
           showsVerticalScrollIndicator={false}
           keyExtractor={item => item.id}
