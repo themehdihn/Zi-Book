@@ -18,8 +18,9 @@ export default function EmptyLibrary() {
 }
 const styles = StyleSheet.create({
   empty_library: {
-    flex:1,
+    flex: 1,
+    marginHorizontal: ScaledSize(10),
     alignItems: "center",
-    justifyContent:"center"
+    justifyContent: "center"
   }
 });

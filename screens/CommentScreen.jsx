@@ -1,10 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { View, StyleSheet, Text, StatusBar, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React, {  useState, useEffect } from 'react';
+import { View, StyleSheet, StatusBar, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import Svg, { Path } from "react-native-svg"
 import { ScaledSize, ScaledHeight, ScaledWidth } from "../utils/responsive"
 import ZiText from '../components/modules/ZiBookText'
-import { Icon } from '../components/modules/AppIcon';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 import Social from '../components/templates/Comment/Social';
@@ -12,7 +10,6 @@ import SubmitComment from '../components/templates/Comment/Submit';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment, getComment, unrefetch } from '../redux/store/comments';
-
 
 export default function CommentScreen({ route, navigation }) {
 
@@ -24,7 +21,6 @@ export default function CommentScreen({ route, navigation }) {
 
     useEffect(() => {
         getCommenterName()
-
     }, [])
 
     const getCommenterName = async () => {

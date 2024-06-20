@@ -1,10 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { View, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native';
-import { useIsFocused } from '@react-navigation/native';
+import { View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../utils/responsive"
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../components/modules/Header';
 import LibraryCart from '../components/templates/Library/LibraryCart/LibraryCart';
 import ZiText from '../components/modules/ZiBookText'
 import { useSelector, useDispatch } from 'react-redux';
@@ -78,7 +76,7 @@ export default function LibraryScreen({ navigation }) {
           data={list}
           iinitialNumToRender={20}
           contentContainerStyle={{
-            marginTop: ScaledSize(15),
+            columnGap: ScaledSize(10),
             marginHorizontal: ScaledSize(20),
           }}
           showsVerticalScrollIndicator={false}

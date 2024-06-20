@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
         height: ScaledSize(45),
         borderRadius: ScaledSize(10),
         alignItems: "center",
-        marginRight: ScaledSize(8),
+        
     }
 });

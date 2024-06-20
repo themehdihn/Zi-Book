@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         backgroundColor: "#e9e9e9a2",
         borderRadius: ScaledSize(8),
-        fontSize: 13,
+        fontSize: ScaledSize(15),
         marginTop: ScaledSize(10),
         textAlign: "right",
        

@@ -44,8 +44,8 @@ export default function LoginScreen({ navigation }) {
         const checkForNet = async () => {
             const state = await NetInfo.fetch()
             if (!state.isConnected) confgureAlert();
-
         }
+        
         checkForNet()
     }, [])
 
@@ -73,7 +73,7 @@ export default function LoginScreen({ navigation }) {
     }, []);
 
     useEffect(() => {
-        const myFunc = async () => {
+        const userAuthCheck = async () => {
             const token = await AsyncStorage.getItem("token");
             const userId = JSON.parse(await AsyncStorage.getItem("userId"));
             if (token !== null && userId !== null) {
@@ -88,7 +88,7 @@ export default function LoginScreen({ navigation }) {
                 }
             }
         };
-        myFunc();
+        userAuthCheck();
 
     }, [])
 

@@ -1,9 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import ZiText from '../components/modules/ZiBookText'
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../utils/responsive"
-import { Icon } from '../components/modules/AppIcon';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/modules/Header';
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +9,6 @@ import { getCatBook } from '../redux/store/books';
 import BookCart from '../components/modules/BookCart/BookCart';
 import GoBack from '../components/modules/GoBack';
 import EmptyView from '../components/modules/EmptyView';
-import LoadingBook from '../components/modules/LoadingBook';
 
 export default function CategoryBookScreen({ navigation, route }) {
   if (!route.params.catId) return null
@@ -49,17 +46,15 @@ export default function CategoryBookScreen({ navigation, route }) {
 
       <View style={styles.lastbook_warper}>
         {datas.length === 0 ? (
-         
-          <EmptyView title="کتابی موجود نیست"/>
+          <EmptyView title="کتابی موجود نیست" />
         ) : (
           <FlatList
             removeClippedSubviews={true}
             numColumns={2}
+            columnWrapperStyle={{ gap: 15 }}
             data={datas}
             iinitialNumToRender={20}
-            contentContainerStyle={{
-              paddingBottom: ScaledSize(70),
-            }}
+            contentContainerStyle={{ paddingBottom: ScaledSize(100), gap: 15 }}
             showsVerticalScrollIndicator={false}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (

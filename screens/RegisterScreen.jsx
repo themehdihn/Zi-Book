@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Keyboard } from 'react-native';
-import ZiText from '../components/modules/ZiBookText'
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Keyboard } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { ScaledSize } from '../utils/responsive';
 import SubmitBtn from '../components/modules/SubmitBtn';
@@ -22,11 +21,14 @@ export default function RegisterScreen({ navigation }) {
     const handleUserRegistration = async (user) => {
         try {
             const status = await dispath(registerUser(user));
-                console.log("register=>>>", status.payload)
+            console.log("register=>>>", status.payload)
+
             if (status.payload === 200) {
                 //navigation
                 Toast.success('حساب کاربری با موفقیت ساخته شد!', 'top')
-                navigation.navigate("login", { successRegister: true });
+                setTimeout(() => {
+                    navigation.navigate("login", { successRegister: true });
+                }, 1000);
             } else {
                 //show error
                 Toast.error('خطایی رخ داده است!', 'top')
@@ -35,7 +37,6 @@ export default function RegisterScreen({ navigation }) {
             console.log(err);
         }
     };
-
 
     return (
         <View style={[styles.container, { backgroundColor: colors.primary }]}>

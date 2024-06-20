@@ -15,19 +15,11 @@ export default function ChangePassScreen({ navigation }) {
 
     const { colors } = useTheme();
   
-
-
     useEffect(() => {
-
-
     }, [])
-
-   
 
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
-
-          
         </SafeAreaView>
     )
 }

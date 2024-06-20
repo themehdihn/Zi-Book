@@ -1,14 +1,13 @@
 import React from 'react'
-import { Text, View, StyleSheet, StatusBar, TouchableOpacity, ScrollView, Image, FlatList, SafeAreaView, TouchableWithoutFeedback, } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import ZiText from './ZiBookText'
 import { Icon } from './AppIcon';
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../../utils/responsive"
 import { useTheme, useNavigation } from '@react-navigation/native';
 
 export default function HeadSection({ title }) {
-    const {
-        dark, colors,
-    } = useTheme();
+
+    const { dark, colors } = useTheme();
     const navigation = useNavigation()
 
     const navigationHandler = () => {
@@ -18,7 +17,6 @@ export default function HeadSection({ title }) {
             navigation.navigate('freebook')
         }
     }
-
 
     return (
         <View style={styles.headsection}>

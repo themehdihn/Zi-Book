@@ -58,8 +58,8 @@ const BookView = ({ bookInfo }) => {
     }, []);
 
     useEffect(() => {
-
         console.log("read and last =>>>", progresss, read)
+        
         if (dark) {
             setDefaultTheme(darktheme)
         } else {
@@ -73,7 +73,6 @@ const BookView = ({ bookInfo }) => {
             progress,
             lastReadLocation: currentLocation
         }
-        // console.log("dataaa",data)
         await dispatch(updateLibrary(data))
         dispatch(unrefetch());
     }

@@ -35,11 +35,10 @@ export default function NewBooksScreen({ navigation }) {
         <FlatList
           removeClippedSubviews={true}
           numColumns={2}
+          columnWrapperStyle={{ gap: 15 }}
           data={books}
           iinitialNumToRender={20}
-          contentContainerStyle={{
-            paddingBottom: ScaledSize(70),
-          }}
+          contentContainerStyle={{ paddingBottom: ScaledSize(100), gap: 15 }}
           showsVerticalScrollIndicator={false}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (

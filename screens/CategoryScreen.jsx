@@ -1,38 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { useTheme } from '@react-navigation/native';
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { useNavigation, useIsFocused } from '@react-navigation/native';
-import ZiText from '../components/modules/ZiBookText'
 import { ScaledSize, ScaledWidth, ScaledHeight } from "../utils/responsive"
-import { Icon } from '../components/modules/AppIcon';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import CategoryCart from '../components/templates/Category/CategoryCart/CategoryCart';
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../redux/store/categories";
-import { getCatBook } from '../redux/store/books';
-
+import { useSelector } from "react-redux";
 
 export default function CategoryScreen({ navigation }) {
   const { colors } = useTheme();
   const categories = useSelector(state => state.categories)
 
-  const categorySubmissions =  (catId,catName) => {
+  const categorySubmissions = (catId, catName) => {
     navigation.navigate('catbook', { catId, catName })
   }
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
-     
+      {/* Start Cat List */}
       <View style={styles.category_container}>
         <FlatList
           removeClippedSubviews={true}
           numColumns={3}
           data={categories}
-          contentContainerStyle={{
-            paddingBottom: ScaledSize(100),
-            alignSelf: "center"
-          }}
+          contentContainerStyle={{ paddingBottom: ScaledSize(100), alignSelf: "center" }}
           showsVerticalScrollIndicator={false}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (

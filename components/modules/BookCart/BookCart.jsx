@@ -58,8 +58,6 @@ const styles = StyleSheet.create({
         borderRadius: ScaledSize(10),
         alignItems: "center",
         justifyContent: "space-evenly",
-        marginBottom: ScaledSize(15),
-        marginHorizontal: 10,
     },
     book_img: {
         width: ScaledSize(100),

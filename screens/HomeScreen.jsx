@@ -7,17 +7,13 @@ import ZiCarousel from '../components/templates/Home/Carousel/MyCarousel';
 import TopCatItem from "../components/templates/Home/TopCatCart/TopCatItem";
 import HeadSection from "../components/modules/HeadSection";
 import BookCart from "../components/modules/BookCart/BookCart";
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import Subscription from "../components/templates/Home/Subscription/Subscription";
 import SearchBox from "../components/templates/Search/SearchBox/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooks } from "../redux/store/books";
 import { getAllCategories } from "../redux/store/categories";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { decodeToken } from "../utils/token";
 import { getCarousel } from "../redux/store/carousel";
 import LoadingIndex from "../components/templates/LoadingHome/LoadingIndex";
-
 
 export default function Home({ navigation }) {
     const dispath = useDispatch();
@@ -93,7 +89,7 @@ export default function Home({ navigation }) {
                             <FlatList
                                 removeClippedSubviews={true}
                                 data={finalCategory}
-                                contentContainerStyle={{ paddingLeft: ScaledSize(20) }}
+                                contentContainerStyle={{ paddingLeft: ScaledSize(20), gap: 15 }}
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
                                 keyExtractor={item => item.id}
@@ -112,20 +108,18 @@ export default function Home({ navigation }) {
 
                         <View style={{ paddingTop: ScaledSize(40), }}>
                             <HeadSection title="تازه ها" />
-                            {/* head title */}
-                            <View style={{ paddingTop: ScaledSize(25) }}>
+                            {/* Head Title */}
+                            <View style={{ paddingTop: ScaledSize(25), paddingHorizontal: ScaledSize(10) }}>
                                 <FlatList
                                     removeClippedSubviews={true}
                                     data={homeBooks}
-                                    contentContainerStyle={{ paddingLeft: ScaledSize(20) }}
+                                    contentContainerStyle={{ paddingLeft: ScaledSize(10), gap: 15 }}
                                     horizontal
                                     showsHorizontalScrollIndicator={false}
                                     keyExtractor={item => item.id}
                                     renderItem={({ item }) => (
                                         <TouchableOpacity onPress={() => navigation.navigate('bookdetails', { book: item, cat: categories })}>
-                                            <BookCart
-                                                {...item}
-                                            />
+                                            <BookCart {...item} />
                                         </TouchableOpacity>
                                     )}
                                 />
@@ -138,19 +132,17 @@ export default function Home({ navigation }) {
                         <View style={{ paddingTop: ScaledSize(40), }}>
                             <HeadSection title="کتاب های رایگان" />
                             {/* head title */}
-                            <View style={{ paddingTop: ScaledSize(25) }}>
+                            <View style={{ paddingTop: ScaledSize(25), paddingHorizontal: ScaledSize(10) }}>
                                 <FlatList
                                     removeClippedSubviews={true}
                                     data={filtredFreeBooks}
-                                    contentContainerStyle={{ paddingLeft: ScaledSize(20) }}
+                                    contentContainerStyle={{ paddingLeft: ScaledSize(10), gap: 15 }}
                                     horizontal
                                     showsHorizontalScrollIndicator={false}
                                     keyExtractor={item => item.id}
                                     renderItem={({ item }) => (
                                         <TouchableOpacity onPress={() => navigation.navigate('bookdetails', { book: item, cat: categories })}>
-                                            <BookCart
-                                                {...item}
-                                            />
+                                            <BookCart {...item} />
                                         </TouchableOpacity>
                                     )}
                                 />
